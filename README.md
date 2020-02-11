@@ -7,7 +7,7 @@ This is a C++ module for Garry's Mod which allows developers to generate [UUID](
 ### Documentation
 This module only provides 1 new function:
 ```lua
-string uuid.generate(boolean stripDashes=false)
+string uuid.generate(boolean includeDashes=true)
 ```
 
 ### Usage
@@ -15,7 +15,7 @@ This is a basic example of how to use this module:
 ```lua
 require("uuid")
 
-local myUUID = uuid.generate()
+local myUUID = uuid.generate() -- The include dashes parameter is optional and by default true
 local noDashesUUID = uuid.generate(false)
 
 print(myUUID)
