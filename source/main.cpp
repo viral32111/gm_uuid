@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <string>
 using namespace std;
 
@@ -20,7 +21,7 @@ LUA_FUNCTION(generate){
 		if (LUA->IsType(1, Type::BOOL))includeDashes = LUA->GetBool(1);
 
 		string uuid = lexical_cast<string>(randomUUIDGenerator());
-		if (includeDashes == false)std::replace(uuid.begin(), uuid.end(), '-', '\0');
+		if (includeDashes == false)uuid.erase(std::remove(uuid.begin(), uuid.end(),'-'),uuid.end());
 
 		LUA->PushString(uuid.c_str());
 	} catch (const std::exception & ex) {
