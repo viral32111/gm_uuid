@@ -1,5 +1,5 @@
 /*
-UUID - Generate UUID strings in Garry's Mod
+UUID - A universal unique ID generator module for Garry's Mod.
 Copyright (C) 2020 viral32111
 
 This program is free software: you can redistribute it and/or modify
