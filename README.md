@@ -26,4 +26,4 @@ print( GenerateUUID( true ) ) -- 123e4567-e89b-12d3-a456-426655440000
 print( GenerateUUID( false ) ) -- 123e4567e89b12d3a456426655440000
 ```
 
-###### [Copyright 2020 viral32111](LICENSE.md)
+> Copyright (C) 2020 [viral32111](https://github.com/viral32111). Licenced under [GNU AGPLv3](https://www.gnu.org/licenses/agpl-3.0.html).
