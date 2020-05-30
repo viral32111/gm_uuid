@@ -1,6 +1,6 @@
 # UUID
 
-A module for Garry's Mod that allows the generation of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) strings using the Boost library.
+A module for Garry's Mod that allows the generation of version 4 [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)) strings using the Boost library.
 
 ## Download
 
