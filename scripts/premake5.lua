@@ -1,5 +1,8 @@
 -- Store operating system string
-local os = os.target()
+local osName = os.target()
+
+-- Store the absolute path to the repository root
+local repoRoot = string.sub( os.getcwd(), 0, -9 ) -- Substring to remove "/scripts" from the end
 
 -- Define the solution & project
 workspace ( "UUID" )
@@ -7,7 +10,7 @@ workspace ( "UUID" )
 	filename ( "uuid" )
 
 	-- Generated project files directory
-	location ( "../project/" .. os .. "/" )
+	location ( "../project/" .. osName .. "/" )
 
 	-- Configurations
 	configurations {
@@ -20,18 +23,24 @@ workspace ( "UUID" )
 
 		-- Misc C++ stuff
 		language ( "C++" )
+
+		-- This is a shared library (.dll/.so)
 		kind ( "SharedLib" )
-		staticruntime ( "On" )
-		symbols ( "On" )
+
+		-- No debug settings
+		symbols ( "Off" )
 		optimize ( "Speed" )
+		staticruntime ( "On" )
+
+		-- x64 only
 		architecture ( "x86_64" )
 
 		-- Generated project files directory
-		location ( "../project/" .. os .. "/" )
+		location ( "../project/" .. osName .. "/" )
 
 		-- Build/output directory
-		objdir ( "../build/" .. os .. "/obj/" )
-		targetdir ( "../build/" .. os .. "/" )
+		objdir ( "../build/" .. osName .. "/obj/" )
+		targetdir ( "../build/" .. osName .. "/" )
 
 		-- Output name & extension
 		targetname ( "gm_uuid" )
@@ -48,9 +57,15 @@ workspace ( "UUID" )
 		}
 		
 		-- Per-OS module suffix & extension
-		if ( os == "windows" ) then
+		if ( osName == "windows" ) then
 			targetsuffix ( "_win64" )
-		elseif ( os == "linux" ) then
+		elseif ( osName == "linux" ) then
 			targetprefix ( "" ) -- Linux defaults to lib prefix
 			targetsuffix ( "_linux64" )
 		end
+
+		-- Commands to run after a successful build
+		postbuildcommands {
+			"{MKDIR} \"" .. repoRoot .. "/deploy\"", -- Create deploy directory
+			"{MOVE} \"%{cfg.buildtarget.abspath}\" \"" .. repoRoot .. "/deploy/%{cfg.buildtarget.name}\"", -- Move DLL to deploy directory
+		}

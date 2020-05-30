@@ -3,3 +3,6 @@ project/
 
 # Build files
 build/
+
+# Deployed modules
+deploy/
