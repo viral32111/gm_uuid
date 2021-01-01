@@ -1,6 +1,6 @@
 /*
 UUID - A universal unique ID generator module for Garry's Mod.
-Copyright (C) 2020 viral32111
+Copyright (C) 2020 - 2021 viral32111
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
